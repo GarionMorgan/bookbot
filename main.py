@@ -2,8 +2,12 @@ import sys
 from stats import num_of_words, get_book_text, get_chars_dict, chars_dict_to_sorted_list
 
 def main():
-    file_path = "books/frankenstein.txt"
-    results = get_book_text(sys.argv)
+    # using sys to grab an argument from the CLI
+    if len(sys.argv) < 2:
+        print(f"Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    file_path = sys.argv[1]
+    results = get_book_text(file_path)
     #print(results)
     num_words = num_of_words(results)
     #call on char_dict
